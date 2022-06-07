@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+:root {
+  --darkblue: #0d3d74;
+  --blue: #145bac;
+}
+
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  display: block;
+  margin: 40px;
+}
+
+.container {
+  margin: 50px;
+  display: flex;
+}
+
+.slike {
+  width: 1200px;
+  display: flex;
+  overflow: hidden;
+}
+
+img {
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.tekst {
+  width: 30%;
+  /* float: right; */
+  font-size: 22px;
+  color: var(--blue);
+  padding: 10px;
+  margin: 20px;
+}
+.naslov {
+  font-weight: 900;
+  margin-bottom: 20px;
+  font-size: 30px;
+  color: var(--darkblue);
+}
+
+.strelice {
+  width: 1200px;
+  /* margin: 10px; */
+  align-items: center;
+  display: block; /*ak nema ovo troje, ne dela*/
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  position: absolute;
+}
+
+.strelice img {
+  width: 16px;
+}
