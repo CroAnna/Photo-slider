@@ -1,89 +1,84 @@
 let brojac = 0;
 let ukupnaSirina = 0;
-let sirinaSlika = $(".slike").width();
-console.log($(`.sl8`).width());
-console.log("khm");
-
-console.log(`sirinaSlika: ${sirinaSlika}`);
-console.log(`trenutni: ${brojac}`);
 
 $(document).ready(function () {
-  $(".slike").css({
-    right: $(`.sl8`).width() + $(`.sl7`).width() + 60 + "px", // da se sakriju 2 prve slike
-  });
+  sakrijPocetno();
 
   $("#left").click(function () {
-    console.log(`brojac na pocetku: ${brojac}`);
     if (brojac <= 0) {
-      brojac = 0;
+      ukupnaSirina = 0;
+      for (let i = 1; i <= 7; i++) {
+        ukupnaSirina += $(`.sl${i}`).width();
+      }
+      $(".slike").animate({ left: `+=${$(`.sl8`).width() + 30}px` });
+      odgodaPomicanja("lijevo");
+      brojac = 7;
       return;
     }
 
     let sirinaZaPomak = $(`.sl${brojac}`).width() + 30; // gleda se prethodna slika
-    console.log(`sirina za pomak: ${sirinaZaPomak}`);
     $(".slike").animate({ left: `+=${sirinaZaPomak}px` });
 
     brojac--;
-    console.log(`brojac malo poslije: ${brojac}`);
     $(".arrow-left").attr("src", "Assets/arrow-gray-left.png");
-    odgoda("left");
+    odgodaStrelice("left");
   });
 
   $("#right").click(function () {
-    console.log(`brojac na pocetku: ${brojac}`);
     if (brojac >= 7) {
       ukupnaSirina = 0;
       for (let i = 2; i <= 8; i++) {
-        // il 8
-        // ukupna sirina za povratak
-        console.log($(`.sl${i}`).width());
-        console.log(`ukupna sirina: ${ukupnaSirina}`);
-
         ukupnaSirina += $(`.sl${i}`).width();
       }
-      console.log(`ukupna sirina: ${ukupnaSirina}`);
-
-      console.log("sad se vrati na pocetak");
-      // $(".slike").css({
-      //   left: $(".slike").position().left + ukupnaSirina + 180 + "px",
-      // });
-
       $(".slike").animate({ left: `-=${$(`.sl8`).width() + 30}px` });
 
-      odgodaPomaka();
+      odgodaPomicanja("desno");
       brojac = 0;
-      console.log("broajc vracen na 0");
       return;
     }
 
     let sirinaZaPomak = $(`.sl${brojac + 1}`).width() + 30; // 20px = margin svake slike, gleda se trenutna slika
-    console.log(sirinaZaPomak);
     $(".slike").animate({ left: `-=${sirinaZaPomak}px` });
     brojac++;
-    console.log(`brojac malo poslije: ${brojac}`);
     $(".arrow-right").attr("src", "Assets/arrow-gray-right.png");
-    odgoda("right");
+    odgodaStrelice("right");
   });
 });
 
-function odgoda(strana) {
+function odgodaStrelice(smjer) {
   setTimeout(function () {
-    $(`.arrow-${strana}`).attr("src", `Assets/arrow-blue-${strana}.png`);
+    $(`.arrow-${smjer}`).attr("src", `Assets/arrow-blue-${smjer}.png`);
   }, 300);
 }
 
-function odgodaPomaka() {
-  setTimeout(function () {
-    console.log(`nova ukupna sirina: ${ukupnaSirina}`);
-    console.log($(`.sl1`).width());
+function odgodaPomicanja(smjer) {
+  if (smjer == "desno") {
+    setTimeout(function () {
+      $(".slike").css({
+        left:
+          $(".slike").position().left +
+          ukupnaSirina +
+          150 +
+          $(`.sl1`).width() +
+          "px",
+      });
+    }, 500);
+  } else {
+    setTimeout(function () {
+      $(".slike").css({
+        left:
+          $(".slike").position().left -
+          ukupnaSirina +
+          -200 -
+          $(`.sl1`).width() +
+          "px",
+      });
+    }, 500);
+  }
+}
 
-    $(".slike").css({
-      left:
-        $(".slike").position().left +
-        ukupnaSirina +
-        150 +
-        $(`.sl1`).width() +
-        "px",
-    });
-  }, 500);
+function sakrijPocetno() {
+  $(".slike").css({
+    right: $(`.sl8`).width() + $(`.sl7`).width() + 60 + "px", // da se sakriju 2 prve slike - MOZDA JE DOSTA I SAMO 1???
+  });
 }
