@@ -1,6 +1,9 @@
 let brojac = 0;
 let ukupnaSirina = 0;
 let sirinaSlika = $(".slike").width();
+console.log($(`.sl8`).width());
+console.log("khm");
+
 console.log(`sirinaSlika: ${sirinaSlika}`);
 console.log(`trenutni: ${brojac}`);
 
@@ -41,6 +44,9 @@ $(document).ready(function () {
       // $(".slike").css({
       //   left: $(".slike").position().left + ukupnaSirina + 180 + "px",
       // });
+
+      $(".slike").animate({ left: `-=${$(`.sl8`).width() + 20}px` });
+
       odgodaPomaka();
       brojac = 0;
       console.log("broajc vracen na 0");
@@ -66,7 +72,12 @@ function odgoda(strana) {
 function odgodaPomaka() {
   setTimeout(function () {
     $(".slike").css({
-      left: $(".slike").position().left + ukupnaSirina + 180 + "px",
+      left:
+        $(".slike").position().left +
+        ukupnaSirina +
+        200 +
+        $(`.sl8`).width() +
+        "px",
     });
-  }, 300);
+  }, 500);
 }
