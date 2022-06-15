@@ -8,15 +8,18 @@ console.log(`sirinaSlika: ${sirinaSlika}`);
 console.log(`trenutni: ${brojac}`);
 
 $(document).ready(function () {
+  $(".slike").css({
+    right: $(`.sl8`).width() + $(`.sl7`).width() + 60 + "px", // da se sakriju 2 prve slike
+  });
+
   $("#left").click(function () {
     console.log(`brojac na pocetku: ${brojac}`);
     if (brojac <= 0) {
       brojac = 0;
-      // console.log("nemrem");
       return;
     }
 
-    let sirinaZaPomak = $(`.sl${brojac}`).width() + 20; // gleda se prethodna slika
+    let sirinaZaPomak = $(`.sl${brojac}`).width() + 30; // gleda se prethodna slika
     console.log(`sirina za pomak: ${sirinaZaPomak}`);
     $(".slike").animate({ left: `+=${sirinaZaPomak}px` });
 
@@ -45,7 +48,7 @@ $(document).ready(function () {
       //   left: $(".slike").position().left + ukupnaSirina + 180 + "px",
       // });
 
-      $(".slike").animate({ left: `-=${$(`.sl8`).width() + 20}px` });
+      $(".slike").animate({ left: `-=${$(`.sl8`).width() + 30}px` });
 
       odgodaPomaka();
       brojac = 0;
@@ -53,7 +56,7 @@ $(document).ready(function () {
       return;
     }
 
-    let sirinaZaPomak = $(`.sl${brojac + 1}`).width() + 20; // 20px = margin svake slike, gleda se trenutna slika
+    let sirinaZaPomak = $(`.sl${brojac + 1}`).width() + 30; // 20px = margin svake slike, gleda se trenutna slika
     console.log(sirinaZaPomak);
     $(".slike").animate({ left: `-=${sirinaZaPomak}px` });
     brojac++;
@@ -71,12 +74,15 @@ function odgoda(strana) {
 
 function odgodaPomaka() {
   setTimeout(function () {
+    console.log(`nova ukupna sirina: ${ukupnaSirina}`);
+    console.log($(`.sl1`).width());
+
     $(".slike").css({
       left:
         $(".slike").position().left +
         ukupnaSirina +
-        200 +
-        $(`.sl8`).width() +
+        150 +
+        $(`.sl1`).width() +
         "px",
     });
   }, 500);
