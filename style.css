@@ -1,8 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap");
 :root {
-  --darkblue: #0d3d74;
+  --darkblue: #134880;
   --blue: #145bac;
   --ligthblue: #d7e5f5;
+  --lightgrey: #dddddd;
+  --darkgrey: #47494c;
+  --black: #000000;
 }
 
 * {
@@ -10,12 +13,39 @@
   border: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 body {
   display: block;
-  margin: 40px;
+  /* margin: 40px; */
+}
+
+header {
+  /* position: absolute; */
+  /* width: 621px; */
+  height: 100px;
+  left: 320px;
+  top: 0px;
+
+  background: #dddddd;
+  border-radius: 0px 0px 5px 5px;
+  background-color: var(--lightgrey);
+}
+
+footer {
+  /* position: absolute; */
+  /* width: 941px; */
+  position: relative;
+  height: 100px;
+  left: 0px;
+  top: 100px;
+
+  background: #dddddd;
+  border-radius: 0px 0px 5px 5px;
+  text-align: center;
+  padding: 20px;
+  /* transform: matrix(1, 0, 0, -1, 0, 0); */
 }
 
 .container {
@@ -24,7 +54,7 @@ body {
   overflow: hidden; /* ak je tu, onda se lijepo vrte */
 }
 
-.slike {
+.images {
   width: 70%;
   display: flex;
   /*overflow: hidden;  al tu smeta */
@@ -33,14 +63,14 @@ body {
 
 img {
   margin: 15px;
-  border-radius: 10px;
+  border-radius: 5px;
   position: relative;
   height: 80%;
   margin-top: auto; /* stavi ih na sredinu po visini */
   margin-bottom: auto;
 }
 
-.tekst {
+.text {
   width: 30%;
   font-size: 22px;
   color: var(--blue);
@@ -51,14 +81,14 @@ img {
   float: right;
 }
 
-.naslov {
-  font-weight: 900;
+.text-title {
+  font-weight: 1600;
   margin-bottom: 20px;
   font-size: 40px;
   color: var(--darkblue);
 }
 
-.strelice {
+.arrows {
   width: 70%;
   align-items: center;
   display: block;
@@ -68,7 +98,7 @@ img {
   position: absolute;
 }
 
-.strelice img {
+.arrows img {
   width: 15px;
 }
 
